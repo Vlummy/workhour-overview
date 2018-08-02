@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="css/test.css">
 </head>
 
-<body class="flexy">
+<body class="flexy bodyborder">
 
 <!--Her begynner innhold -->
 
@@ -32,6 +32,7 @@ Timeline renderer
 <!-- 
 Start/stopp klokke m/ knapper 
 -->
+<h2>Event Clock</h2>
 <div class="wrapper buttons">
 	<p class="textbox">Start og stopp klokken for å registrere en arbeidsøkt. Etc...</p>
 	<div class="buttons normalise">
@@ -54,8 +55,9 @@ Start/stopp klokke m/ knapper
 <!-- 
 Manuell input av tidspunkt for arbeid 
 -->
+<h2>Add Event Manually</h2>
 <div class="wrapper" id="eventStyle">	
-		<h2>Add Event Manually</h2>
+		
 		<p class="textbox">Sett inn tidspunkt for start-tid og start-dato og slutt-tid og slutt-dato.</p>
 			<div class="button wrapper">
 				Start Time: <input id="startStamp" type="time">
@@ -70,8 +72,9 @@ Manuell input av tidspunkt for arbeid
 <!-- 
 Oversikt over arbeidsøkter 
 -->
+<h2>Workhour Overview</h2>
 <div class="wrapper table-container workhour-overview-table">
-			<h2>Workhour Overview</h2>
+			
 			<p class="textbox">Her er oversikt over dine jobbøkter og hvilke tillegg som gjelder.</p>
 			<table class="workhour-table">
 				<tr>
@@ -93,8 +96,9 @@ Oversikt over arbeidsøkter
 Overview of registered work hours.
 Shows: Total hours, and hours with (UB22, UB45, UB45 Saturday, UB90, UB96)
 -->
+<h2>Montly Sum Overview</h2>
 <div class="wrapper monthly-sum-overview">		
-		<h2>Montly Sum Overview</h2>
+		
 		<p class="textbox">Her er oversikten over det du har jobbet denne måneden, og hvilke tillegg som gjelder.</p>
 			<table class="workhour-table">
 				<tr>
@@ -117,8 +121,9 @@ Shows: Total hours, and hours with (UB22, UB45, UB45 Saturday, UB90, UB96)
 </div>
 
 <!-- divvet -->
+<h2>Monthly Revenue Calculator</h2>
 <div class="wrapper monthly-revenue-overview">	
-		<h2>Monthly Revenue Calculator</h2>
+		
 		<p class="textbox">Regn ut hvor mye du har tjent.</p>
 		
 		<div class="normalise wrapper">
@@ -127,11 +132,11 @@ Shows: Total hours, and hours with (UB22, UB45, UB45 Saturday, UB90, UB96)
 		</div>
 		
 		<div class="pay-table wrapper">
-			<p>Your Total Is: 
+			<p>Your Total Wage Is: 
 			<label id="total-pay" style="color: red"></label>
 			</p>
 			
-			<p>Your Total Without Add-on Is:
+			<p>Your Total Wage Without Add-on Is:
 			<label id="total-pay-no-ub" style="color: blue"></label>
 			</p> 
 			
