@@ -1,0 +1,17 @@
+.workhour-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.workhour-table td, .workhour-table th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.workhour-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: yellow;
+    color: black;
+}
