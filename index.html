@@ -1,48 +1,81 @@
 <!DOCTYPE html>
+
+<!-- UB-calculator by Øyvind Johannesen dato og tid-->
+
 <html>
 <head>
 	<title>Timeliner</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/timeline.min.css">
-	<link rel="stylesheet" href="css/main-stylesheet.css">
+	<!-- <link rel="stylesheet" href="css/main-stylesheet.css"> -->
+	<link rel="stylesheet" href="css/test.css">
 </head>
-<body>
 
+<body class="flexy bodyborder">
 
-	<div class="buttons">
-		<button id="startButton" onclick="startWork(); startTimer();">Start</button>
-		<button id="stopButton" onclick="stopWork(); myStopFunction();">Stop</button>
-		<button id="showTimeButton" onclick="changeZoom(this);">Month</button>
-		<button id="clearEventsButton" onclick="clearEvents();">Clear All Events</button>
-		<button id="showAllEvents" onclick="showAllEvents();">Show All Events</button>
-		<button id="removeEventButton" onclick="removeEvent();">Remove Selected Event</button>
-	</div>
+<!--Her begynner innhold -->
 
-	<label id="currentState"></label>
+<h1>Den Store UB-kalkulatoren</h1>
 
-
-
+<!-- 
+Timeline renderer
+-->
+<div class="wrapper">
 	<div id="myTimeline">
 		<ul class="timeline-events">
 			<li data-timeline-node="{ start:'2010-07-16 10:00',end:'2010-07-16 13:00',content:'Event Here' }">Event Label</li>
 		</ul>
 	</div>
+</div>
 
-	<div>
-		<h2>Add Event Manually</h2>
-		Start Time: <input id="startStamp" type="time">
-		Start Date: <input id="startDateStamp" type="date">
-		End Time: <input id="endStamp" type="time">
-		End Date: <input id="endDateStamp" type="date">
-		<button id="addEventButton" onclick="addManualEvent();">Add Event</button>
+<!-- 
+Start/stopp klokke m/ knapper 
+-->
+<h2>Event Clock</h2>
+<div class="wrapper buttons">
+	<p class="textbox">Start og stopp klokken for å registrere en arbeidsøkt. Etc...</p>
+	<div class="buttons normalise">
+		<button id="startButton" onclick="startWork(); startTimer();">
+		Start</button>
+		<button id="stopButton" onclick="stopWork(); myStopFunction();">
+		Stop</button>
+		<button id="showTimeButton" onclick="changeZoom(this);">
+		Month</button>
+		<button id="clearEventsButton" onclick="clearEvents();">
+		Clear All Events</button>
+		<button id="showAllEvents" onclick="showAllEvents();">
+		Show All Events</button>
+		<button id="removeEventButton" onclick="removeEvent();">
+		Remove Selected Event</button>
 	</div>
+	<label id="currentState"></label>
+</div>
 
-	<div class="timeline-event-view"></div>
+<!-- 
+Manuell input av tidspunkt for arbeid 
+-->
+<h2>Add Event Manually</h2>
+<div class="wrapper" id="eventStyle">	
+		
+		<p class="textbox">Sett inn tidspunkt for start-tid og start-dato og slutt-tid og slutt-dato.</p>
+			<div class="button wrapper">
+				Start Time: <input id="startStamp" type="time">
+				Start Date: <input id="startDateStamp" type="date">
+				End Time: <input id="endStamp" type="time">
+				End Date: <input id="endDateStamp" type="date">
+				<button id="addEventButton" onclick="addManualEvent();">Add Event</button>
+			</div>
+			<div class="timeline-event-view"></div>
+</div>
 
-	<div class="table-container">
-		<div class="workhour-overview-table">
-			<h2>Workhour Overview</h2>
+<!-- 
+Oversikt over arbeidsøkter 
+-->
+<h2>Workhour Overview</h2>
+<div class="wrapper table-container workhour-overview-table">
+			
+			<p class="textbox">Her er oversikt over dine jobbøkter og hvilke tillegg som gjelder.</p>
 			<table class="workhour-table">
 				<tr>
 					<th>Date</th>
@@ -57,58 +90,71 @@
 					<th>UB96</th>
 				</tr>
 			</table>
-		</div>
+</div>
 
-		<div class="monthly-sum-overview">
-			<h2>Montly Sum Overview</h2>
+<!-- 
+Overview of registered work hours.
+Shows: Total hours, and hours with (UB22, UB45, UB45 Saturday, UB90, UB96)
+-->
+<h2>Montly Sum Overview</h2>
+<div class="wrapper monthly-sum-overview">		
+		
+		<p class="textbox">Her er oversikten over det du har jobbet denne måneden, og hvilke tillegg som gjelder.</p>
 			<table class="workhour-table">
 				<tr>
-					<th>Total Hours</th>
-					<td id="total-hours-cell"></td>
-				</tr>
-				<tr>
-					<th>UB22</th>
-					<td id="ub22-cell"></td>
-				</tr>
-				<tr>
-					<th>UB45</th>
-					<td id="ub45-cell"></td>
-				</tr>
-				<tr>
-					<th>UB45 Saturday</th>
-					<td id="ub45sat-cell"></td>
-				</tr>
-				<tr>
-					<th>UB90</th>
-					<td id="ub90-cell"></td>
-				</tr>
-				<tr>
+					<th>Total Hours</th>					
+					<th>UB22</th>		
+					<th>UB45</th>				
+					<th>UB45 Saturday</th>			
+					<th>UB90</th>			
 					<th>UB96</th>
+				</tr>				
+				<tr>
+					<td id="total-hours-cell"></td>					
+					<td id="ub22-cell"></td>					
+					<td id="ub45-cell"></td>					
+					<td id="ub45sat-cell"></td>					
+					<td id="ub90-cell"></td>					
 					<td id="ub96-cell"></td>
 				</tr>
 			</table>
+</div>
+
+<!-- divvet -->
+<h2>Monthly Revenue Calculator</h2>
+<div class="wrapper monthly-revenue-overview">	
+		
+		<p class="textbox">Regn ut hvor mye du har tjent.</p>
+		
+		<div class="normalise wrapper">
+			Enter Hourly Wage:<input id="salary-input" type="number">
+			<button id="pay-calculator" onclick="calculatePay();">Calculate Pay</button> 
 		</div>
-	</div>
-
-
-	<div class="monthly-revenue-overview">
-		<h2>Monthly Revenue Calculator</h2>
-		Enter Hourly Wage: <input id="salary-input" type="number">
-		<button id="pay-calculator" onclick="calculatePay();">Calculate Pay</button>
-		<div class="pay-table">
-			<b>Your Total Is:</b> <label id="total-pay" style="color: red"></label><br>
-			<b>Your Total Without Add-on Is:</b> <label id="total-pay-no-ub" style="color: blue"></label><br>
-			<b>Your Add-on Without Regular Wage Is:</b> <label id="total-ub-no-regular" style="color: green"></label><br>
+		
+		<div class="pay-table wrapper">
+			<p>Your Total Wage Is: 
+			<label id="total-pay" style="color: red"></label>
+			</p>
+			
+			<p>Your Total Wage Without Add-on Is:
+			<label id="total-pay-no-ub" style="color: blue"></label>
+			</p> 
+			
+			<p>Your Add-on Without Regular Wage Is: 
+			<label id="total-ub-no-regular" style="color: green"></label>
+			</p>
 		</div>
-	</div>
+</div>
 
+<!-- Her slutter sidens innhold -->
 
-
-	<script src="javascript/jquery.min.js"></script>
-	<script src="javascript/timeline.min.js"></script>
-	<script src="javascript/timeline_controller.js"></script>
-	<script src="javascript/timer.js"></script>
-	<script src="javascript/moment.js"></script>
+<!-- script-filer -->
+<script src="javascript/jquery.min.js"></script>
+<script src="javascript/timeline.min.js"></script>
+<script src="javascript/timeline_controller.js"></script>
+<script src="javascript/timer.js"></script>
+<script src="javascript/moment.js"></script>
+<!-- /script-filer -->
 
 </body>
 </html>

@@ -1,0 +1,88 @@
+/*testfarger fffc8f*/
+/*!CSS-TEST OVERRIDE!*/
+
+body {}
+html * {
+	
+	
+	font-family: "Source Sans Pro", sans-serif; 
+	margin: 0px;
+	background-color: white;
+	border-collapse: collapse;}
+	
+#myTimeline * {border: 1px solid black;}
+
+
+.buttons {}
+
+.normalise {
+	background-color: #bababa;
+}
+.bodyborder {border: 2px solid black;}
+#currentState {background-color: #bababa;}
+	
+
+/* CSS-class rules
+.border-blue.background { ... } is for one item with multiple classes.
+.border-blue, .background { ... } is for multiple items each with their own class.
+.border-blue .background { ... } is for one item where '.background' is the child of '.border-blue'. 
+*/
+
+/* Tekstboks til intruksjoner */
+
+.textbox {font-weight:bold; margin-left: 1%; margin-bottom: 1%; margin-top: 0.5%;}
+
+/* Header-style */
+
+h1 {
+	background-color:#fffc8f;
+	padding-left: 10%;
+	border-color: 1px solid black;
+	text-align: center;
+	}
+h2,h3,h4,h5{
+	background-color:#fffc8f;
+	padding-left: 5%;
+	border-radius: 15px 0px 0px 0px;
+	border: 1px solid black;
+
+	}
+
+	.timeline-headline * {
+		background-color: #fffc8f;
+		}
+
+/* Table styles */
+table, tr, td, th {border: 1px solid black; background-color: #ebebeb;}
+	
+	
+	input {background-color: #ebebeb;}
+	
+	button {background-color: lightgray;}
+	
+/* Paragraph styling */
+
+p {
+	background-color: #bababa;
+	border-left: solid 1px black;
+	padding-left: 1%;
+	}
+
+/*core flexbox functionality*/
+.flexy {
+	display: flex;
+	flex-direction:column;
+}
+
+.wrapper {
+	background-color: #bababa;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	
+	margin-bottom: 1%;
+	
+}
+
+
+
+
