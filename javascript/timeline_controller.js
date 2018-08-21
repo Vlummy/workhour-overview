@@ -112,12 +112,25 @@ function calculateTotalHours() {
     var totalub90Minutes = 0;
     var totalub96Minutes = 0;
     for(var event in eventListObjects) {
-        totalMinutes = (totalMinutes + eventListObjects[event].minutes);
-        totalub22Minutes = (totalub22Minutes + eventListObjects[event].ub_22.minutes);
-        totalub45Minutes = (totalub45Minutes + eventListObjects[event].ub_45.minutes);
-        totalub45SatMinutes = (totalub45SatMinutes + eventListObjects[event].ub_45_saturday.minutes);
-        totalub90Minutes = (totalub90Minutes + eventListObjects[event].ub_90.minutes);
-        totalub96Minutes = (totalub96Minutes + eventListObjects[event].ub_96.minutes);
+        if(eventListObjects[event].minutes !== "") {
+            totalMinutes = (totalMinutes + eventListObjects[event].minutes);
+        }
+        if(eventListObjects[event].ub_22.minutes !== "") {
+            totalub22Minutes = (totalub22Minutes + eventListObjects[event].ub_22.minutes);
+            console.log(totalub22Minutes);
+        }
+        if(eventListObjects[event].ub_45.minutes !== "") {
+            totalub45Minutes = (totalub45Minutes + eventListObjects[event].ub_45.minutes);
+        }
+        if(eventListObjects[event].ub_45_saturday.minutes !== "") {
+            totalub45SatMinutes = (totalub45SatMinutes + eventListObjects[event].ub_45_saturday.minutes);
+        }
+        if(eventListObjects[event].ub_90.minutes !== "") {
+            totalub90Minutes = (totalub90Minutes + eventListObjects[event].ub_90.minutes);
+        }
+        if(eventListObjects[event].ub_96.minutes !== "") {
+            totalub96Minutes = (totalub96Minutes + eventListObjects[event].ub_96.minutes);
+        }
     }
     var totalHours = (totalMinutes / 60);
     var totalub22Hours = (totalub22Minutes / 60);
@@ -125,12 +138,16 @@ function calculateTotalHours() {
     var totalub45SatHours = (totalub45SatMinutes / 60);
     var totalub90Hours = (totalub90Minutes / 60);
     var totalub96Hours = (totalub96Minutes / 60);
-    totalHoursCell.innerText = Math.round(totalHours * 100) / 100;
-    ub22TotalCell.innerText = Math.round(totalub22Hours * 100) / 100;
-    ub45TotalCell.innerText = Math.round(totalub45Hours * 100) / 100;
-    ub45SatTotalCell.innerText = Math.round(totalub45SatHours * 100) / 100;
-    ub90TotalCell.innerText = Math.round(totalub90Hours * 100) / 100;
-    ub96TotalCell.innerText = Math.round(totalub96Hours * 100) / 100;
+    totalHoursCell.innerText = round(totalHours, 2);
+    ub22TotalCell.innerText = round(totalub22Hours, 2);
+    ub45TotalCell.innerText = round(totalub45Hours, 2);
+    ub45SatTotalCell.innerText = round(totalub45SatHours, 2);
+    ub90TotalCell.innerText = round(totalub90Hours, 2);
+    ub96TotalCell.innerText = round(totalub96Hours, 2);
+}
+
+function round(value, decimals) {
+  return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
 }
 
 function getDayByMonth(date) {
@@ -310,7 +327,7 @@ function calculateUB22(startTime, endTime, date, day) {
         end: '',
         hours: '',
         minutes: '',
-    }
+    };
 
     if(end.startsWith('00:')) {
         end = end.replace('00:', '24:');
